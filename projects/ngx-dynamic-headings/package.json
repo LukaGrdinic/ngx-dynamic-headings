@@ -1,0 +1,26 @@
+{
+  "name": "ngx-dynamic-headings",
+  "version": "2.0.0",
+  "peerDependencies": {
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LukaGrdinic/ngx-dynamic-headings.git",
+    "directory": "projects/ngx-dynamic-headings"
+  },
+  "bugs": {
+    "url": "https://github.com/LukaGrdinic/ngx-dynamic-headings/issues"
+  },
+  "keywords": [
+    "angular",
+    "headings",
+    "accessibility"
+  ],
+  "license": "MIT",
+  "sideEffects": false
+}
