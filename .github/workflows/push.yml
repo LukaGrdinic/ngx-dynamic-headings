@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies 
         run: npm ci
       - name: Run tests 
-        run: npm run test ngx-dynamic-headings
+        run: npm run test:ci
       - name: Make build.sh executable
         run: chmod +x build.sh
       - name: Create a Release
