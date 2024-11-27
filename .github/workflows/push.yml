@@ -29,10 +29,26 @@ jobs:
       - name: Make build.sh executable
         run: chmod +x build.sh
       - name: Create a Release
-        run: npx semantic-release --dry-run
+        run: npx semantic-release
         env:
           GH_TOKEN: ${{ secrets.DH2_PAT }}
           GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+      - name: Check if directory exists
+        run: |
+          if [ -d ./dist/ngx-dynamic-headings ]; then
+            echo "New lib build directory exists"
+            echo "NEW_LIB_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "New lib build does not exist"
+            echo "NEW_LIB_BUILD=false" >> $GITHUB_ENV
+          fi
+      - name: Publish to npm
+        if: ${{ env.NEW_LIB_BUILD == 'true' }}
+        run: |
+          cd ./dist/ngx-dynamic-headings
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
