@@ -153,7 +153,29 @@ Run `npm run start` to run a development server. This app is used as a playgroun
 
 This project uses conventional commits, so make sure all commits adhere to conventional rules. Learn more at https://www.conventionalcommits.org/en/v1.0.0/
 
+Setup appropriate git hooks with husky by running:
+
+`npx husky init`
+
+Then change the commit-msg content in /.husky/_/commit-msg to be:
+
+> #!/usr/bin/env sh
+>
+> npx --no-install commitlint --edit "$1"
+
+This will prevent you from writing any commit message format.
+
+You can use commitizen to help you write appropriate commit message format of conventional commits.
+
+Try it by typing
+
+`npm run commit`
+
+and answer the prompts to create your commit message 
+
 #### VSC users
+
+You can, instead of commitizen use **conventional-commits** VSC extension
 
 Make sure extension **conventional-commits** is installed.
 
